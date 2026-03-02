@@ -21,6 +21,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Global Variables (Base URL 등을 템플릿에서 사용 가능하게 함)
+app.use((req, res, next) => {
+    // 환경 변수 BASE_URL이 있으면 사용, 없으면 실제 접속한 호스트 주소 사용
+    const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+    const host = req.headers.host;
+    res.locals.baseUrl = process.env.BASE_URL || `${protocol}://${host}`;
+    next();
+});
+
 // Nodemailer Transporter 설정
 const transporter = nodemailer.createTransport({
     service: 'gmail',

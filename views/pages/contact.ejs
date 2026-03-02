@@ -1,0 +1,143 @@
+<section class="contact" style="padding: 150px 0;">
+    <div class="container">
+        <div class="contact-header">
+            <h1 style="font-size: 5rem; margin-bottom: 20px;">READY TO SHINE?</h1>
+            <p style="font-size: 1.2rem; opacity: 0.6;">동동스튜디오와 함께할 재능 있는 크리에이터를 기다립니다.</p>
+        </div>
+
+        <div class="contact-content"
+            style="margin-top: 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 100px;">
+            <form action="#" class="contact-form">
+                <div class="input-group">
+                    <input type="text" id="name" required placeholder=" ">
+                    <label for="name">NAME</label>
+                    <div class="line"></div>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" required placeholder=" ">
+                    <label for="email">EMAIL</label>
+                    <div class="line"></div>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="platform" required placeholder=" ">
+                    <label for="platform">PLATFORM / CHANNEL</label>
+                    <div class="line"></div>
+                </div>
+                <div class="input-group">
+                    <textarea id="message" rows="4" required placeholder=" "></textarea>
+                    <label for="message">MESSAGE</label>
+                    <div class="line"></div>
+                </div>
+                <button type="submit" class="submit-btn">SEND MESSAGE</button>
+            </form>
+
+            <div class="contact-info">
+                <div class="info-block">
+                    <h3>EMAIL</h3>
+                    <p>hello@dongdong.studio</p>
+                </div>
+                <div class="info-block">
+                    <h3>LOCATION</h3>
+                    <p>Seoul, S.Korea<br>Gangnam-gu, 123 Digital Road</p>
+                </div>
+                <div class="info-block">
+                    <h3>SOCIAL</h3>
+                    <p>Instagram / YouTube / TikTok</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .input-group {
+        position: relative;
+        margin-bottom: 60px;
+    }
+
+    .input-group input,
+    .input-group textarea {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 15px 0;
+        color: #fff;
+        font-family: inherit;
+        font-size: 1.1rem;
+        outline: none;
+    }
+
+    .input-group label {
+        position: absolute;
+        top: 15px;
+        left: 0;
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        opacity: 0.5;
+        pointer-events: none;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .input-group input:focus~label,
+    .input-group input:not(:placeholder-shown)~label,
+    .input-group textarea:focus~label,
+    .input-group textarea:not(:placeholder-shown)~label {
+        top: -20px;
+        font-size: 0.7rem;
+        opacity: 1;
+    }
+
+    .input-group .line {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: #fff;
+        transition: width 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .input-group input:focus~.line,
+    .input-group textarea:focus~.line {
+        width: 100%;
+    }
+
+    .submit-btn {
+        background: #fff;
+        color: #000;
+        border: none;
+        padding: 20px 60px;
+        font-weight: 800;
+        letter-spacing: 2px;
+        cursor: none;
+        transition: transform 0.3s, background 0.3s;
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-5px);
+        background: #f0f0f0;
+    }
+
+    .info-block {
+        margin-bottom: 40px;
+    }
+
+    .info-block h3 {
+        font-size: 0.8rem;
+        letter-spacing: 2px;
+        opacity: 0.3;
+        margin-bottom: 15px;
+    }
+
+    .info-block p {
+        font-size: 1.5rem;
+    }
+
+    @media (max-width: 1024px) {
+        .contact-content {
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+    }
+</style>

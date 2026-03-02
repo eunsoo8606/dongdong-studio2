@@ -337,6 +337,15 @@ section.light-mode {
     margin: 0;
 }
 
+/* 모바일 전용 요소 - 데스크탑에서 기본적으로 숨김 */
+.menu-overlay {
+    display: none;
+}
+
+.menu-toggle {
+    display: none;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     :root {
@@ -357,6 +366,11 @@ section.light-mode {
         display: none;
     }
 
+    .cursor-follower {
+        display: none !important;
+        /* 모바일에서 마우스 포인터 효과 비활성화 */
+    }
+
     .menu-toggle {
         display: block;
         position: relative;
@@ -372,6 +386,8 @@ section.light-mode {
 
     /* Overlay Styles */
     .menu-overlay {
+        display: block;
+        /* 기본 display:none 해제 */
         position: fixed;
         top: 0;
         left: 0;

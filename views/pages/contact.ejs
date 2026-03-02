@@ -1,12 +1,11 @@
-<section class="contact" style="padding: 150px 0;">
+<section class="contact">
     <div class="container">
         <div class="contact-header">
-            <h1 style="font-size: 5rem; margin-bottom: 20px;">READY TO SHINE?</h1>
-            <p style="font-size: 1.2rem; opacity: 0.6;">동동스튜디오와 함께할 재능 있는 크리에이터를 기다립니다.</p>
+            <h1>READY TO SHINE?</h1>
+            <p>동동스튜디오와 함께할 재능 있는 크리에이터를 기다립니다.</p>
         </div>
 
-        <div class="contact-content"
-            style="margin-top: 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 100px;">
+        <div class="contact-content">
             <form id="consultationForm" class="contact-form">
                 <div class="input-group">
                     <input type="text" id="name" name="name" required placeholder=" ">
@@ -99,6 +98,27 @@
 </script>
 
 <style>
+    .contact {
+        padding: 150px 0;
+    }
+
+    .contact-header h1 {
+        font-size: 5rem;
+        margin-bottom: 20px;
+    }
+
+    .contact-header p {
+        font-size: 1.2rem;
+        opacity: 0.6;
+    }
+
+    .contact-content {
+        margin-top: 100px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 100px;
+    }
+
     .input-group {
         position: relative;
         margin-bottom: 60px;
@@ -159,7 +179,7 @@
         padding: 20px 60px;
         font-weight: 800;
         letter-spacing: 2px;
-        cursor: none;
+        cursor: pointer;
         transition: transform 0.3s, background 0.3s;
     }
 
@@ -187,12 +207,38 @@
 
     .info-block p {
         font-size: 1.5rem;
+        word-break: keep-all;
+        /* 주소 가독성 유지 */
     }
 
     @media (max-width: 1024px) {
+        .contact {
+            padding: 100px 0;
+        }
+
+        .contact-header h1 {
+            font-size: 4rem;
+        }
+
         .contact-content {
             grid-template-columns: 1fr;
             gap: 60px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-header h1 {
+            font-size: 3rem;
+        }
+
+        .info-block p {
+            font-size: 1.2rem;
+            /* 모바일에서 주소 텍스트 크기 축소하여 잘림 방지 */
+        }
+
+        .submit-btn {
+            width: 100%;
+            /* 모바일에서 버튼 전폭 */
         }
     }
 </style>

@@ -407,25 +407,28 @@ section.light-mode {
     }
 
     .mobile-nav-link {
-        font-size: 3.5rem;
+        font-size: 3rem;
+        /* 살짝 크기 조정 */
         font-weight: 900;
         text-decoration: none;
         color: #fff;
         display: block;
-        padding: 10px 0;
-        line-height: 1.1;
-        letter-spacing: -2px;
+        padding: 20px 0;
+        line-height: 1;
+        letter-spacing: -1px;
         opacity: 0;
         transform: translateY(30px);
     }
 
     .mobile-nav-link span {
-        font-size: 1rem;
-        font-weight: 500;
+        font-size: 0.8rem;
+        font-weight: 700;
         color: var(--accent-star);
-        margin-right: 15px;
-        display: inline-block;
-        transform: translateY(-5px);
+        display: block;
+        /* 줄바꿈을 위해 블록 요소로 변경 */
+        margin-bottom: 8px;
+        letter-spacing: 2px;
+        transform: none;
     }
 
     .mobile-menu-footer {

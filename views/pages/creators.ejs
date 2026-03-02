@@ -1,6 +1,6 @@
-<section class="creators" style="padding: 150px 0;">
+<section class="creators">
     <div class="container">
-        <h1 style="font-size: 4rem; margin-bottom: 80px;">OUR CREATORS</h1>
+        <h1 class="creators-title">OUR CREATORS</h1>
 
         <div class="creator-grid">
             <!-- 2열/3열 불규칙 Masonry Layout -->
@@ -145,8 +145,27 @@
     }
 
     @media (max-width: 640px) {
+        .creators {
+            padding: 100px 0;
+        }
+
+        .creators-title {
+            font-size: 2.5rem !important;
+            /* 모바일에서 화면 밖으로 넘치지 않도록 */
+            margin-bottom: 50px !important;
+        }
+
         .creator-grid {
             grid-template-columns: 1fr;
         }
+    }
+
+    .creators {
+        padding: 150px 0;
+    }
+
+    .creators-title {
+        font-size: 4rem;
+        margin-bottom: 80px;
     }
 </style>

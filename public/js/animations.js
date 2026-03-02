@@ -200,3 +200,58 @@ const setupMagnetic = (el) => {
 
 // Apply Magnetic to Logo
 setupMagnetic(document.querySelector('.logo'));
+
+// Mobile Menu Toggle Logic
+const menuToggle = document.querySelector('.menu-toggle');
+const menuOverlay = document.querySelector('.menu-overlay');
+const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+const menuIcon = menuToggle.querySelector('i');
+
+let isMenuOpen = false;
+
+const menuTl = gsap.timeline({ paused: true });
+
+menuTl.to(menuOverlay, {
+    autoAlpha: 1,
+    duration: 0.5,
+    ease: "power2.inOut"
+});
+
+menuTl.to(mobileLinks, {
+    y: 0,
+    opacity: 1,
+    stagger: 0.1,
+    duration: 0.5,
+    ease: "power2.out"
+}, "-=0.3");
+
+menuTl.to('.mobile-menu-footer', {
+    opacity: 1,
+    duration: 0.5
+}, "-=0.3");
+
+menuToggle.addEventListener('click', () => {
+    isMenuOpen = !isMenuOpen;
+
+    if (isMenuOpen) {
+        menuTl.play();
+        menuIcon.setAttribute('data-lucide', 'x');
+        document.body.style.overflow = 'hidden';
+    } else {
+        menuTl.reverse();
+        menuIcon.setAttribute('data-lucide', 'menu');
+        document.body.style.overflow = '';
+    }
+    lucide.createIcons();
+});
+
+// Close menu when a link is clicked
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        isMenuOpen = false;
+        menuTl.reverse();
+        menuIcon.setAttribute('data-lucide', 'menu');
+        document.body.style.overflow = '';
+        lucide.createIcons();
+    });
+});

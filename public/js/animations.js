@@ -157,7 +157,7 @@ if (document.querySelector('.hero')) {
 
     strategyTl.from('.strategy-node', {
         scale: 0,
-        opacity: 0,
+        autoAlpha: 0, /* opacity와 visibility를 동시에 제어 */
         duration: 1,
         stagger: isMobile ? 0.2 : 0.3,
         ease: "back.out(1.7)"

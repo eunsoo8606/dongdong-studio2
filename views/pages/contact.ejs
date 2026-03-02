@@ -7,47 +7,96 @@
 
         <div class="contact-content"
             style="margin-top: 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 100px;">
-            <form action="#" class="contact-form">
+            <form id="consultationForm" class="contact-form">
                 <div class="input-group">
-                    <input type="text" id="name" required placeholder=" ">
+                    <input type="text" id="name" name="name" required placeholder=" ">
                     <label for="name">NAME</label>
                     <div class="line"></div>
                 </div>
                 <div class="input-group">
-                    <input type="email" id="email" required placeholder=" ">
+                    <input type="email" id="email" name="email" required placeholder=" ">
                     <label for="email">EMAIL</label>
                     <div class="line"></div>
                 </div>
                 <div class="input-group">
-                    <input type="text" id="platform" required placeholder=" ">
+                    <input type="text" id="platform" name="platform" required placeholder=" ">
                     <label for="platform">PLATFORM / CHANNEL</label>
                     <div class="line"></div>
                 </div>
                 <div class="input-group">
-                    <textarea id="message" rows="4" required placeholder=" "></textarea>
+                    <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
                     <label for="message">MESSAGE</label>
                     <div class="line"></div>
                 </div>
-                <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                <button type="submit" class="submit-btn" id="submitBtn">SEND MESSAGE</button>
+                <div id="formStatus" style="margin-top: 20px; font-weight: 600; display: none;"></div>
             </form>
 
             <div class="contact-info">
                 <div class="info-block">
                     <h3>EMAIL</h3>
-                    <p>hello@dongdong.studio</p>
+                    <p>dongdongfnb@naver.com</p>
                 </div>
                 <div class="info-block">
                     <h3>LOCATION</h3>
-                    <p>Seoul, S.Korea<br>Gangnam-gu, 123 Digital Road</p>
+                    <p>서울특별시 송파구<br>오금로 11길 55, 213-143호</p>
                 </div>
                 <div class="info-block">
                     <h3>SOCIAL</h3>
-                    <p>Instagram / YouTube / TikTok</p>
+                    <p>Instagram</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    document.getElementById('consultationForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const form = e.target;
+        const submitBtn = document.getElementById('submitBtn');
+        const statusDiv = document.getElementById('formStatus');
+
+        // 버튼 비활성화
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'SENDING...';
+        statusDiv.style.display = 'block';
+        statusDiv.style.color = '#fff';
+        statusDiv.innerText = '메시지를 전송 중입니다...';
+
+        const formData = {
+            name: form.name.value,
+            email: form.email.value,
+            platform: form.platform.value,
+            message: form.message.value
+        };
+
+        try {
+            const response = await fetch('/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData)
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                statusDiv.style.color = '#00F0FF';
+                statusDiv.innerText = '성공적으로 전송되었습니다! 곧 연락드리겠습니다.';
+                form.reset();
+                submitBtn.innerText = 'SENT SUCCESS';
+            } else {
+                throw new Error(result.message);
+            }
+        } catch (error) {
+            statusDiv.style.color = '#ff4d4d';
+            statusDiv.innerText = '전송 실패: ' + error.message;
+            submitBtn.disabled = false;
+            submitBtn.innerText = 'RETRY SEND';
+        }
+    });
+</script>
 
 <style>
     .input-group {
@@ -117,6 +166,12 @@
     .submit-btn:hover {
         transform: translateY(-5px);
         background: #f0f0f0;
+    }
+
+    .submit-btn:disabled {
+        background: #555;
+        color: #888;
+        cursor: not-allowed;
     }
 
     .info-block {

@@ -75,8 +75,8 @@ if (document.querySelector('.hero')) {
     heroTl.to('.split-left', { xPercent: -100, opacity: 0, duration: 2, ease: "power1.inOut" }, 0);
     heroTl.to('.split-right', { xPercent: 100, opacity: 0, duration: 2, ease: "power1.inOut" }, 0);
 
-    // 이미지 컨테이너 노출
-    heroTl.to('.hero-images-container', { opacity: 1, duration: 1.5, ease: "none" }, 0.5);
+    // 이미지 컨테이너 노출 (autoAlpha는 opacity와 visibility를 동시에 제어)
+    heroTl.to('.hero-images-container', { autoAlpha: 1, duration: 1.5, ease: "none" }, 0.5);
 
     // 이미지 등장 (GPU 가속을 위해 y축 이동 최소화 및 스케일 조정)
     heroTl.to('.img-1', { y: 0, scale: 1, duration: 1, ease: "power2.out" }, 1.2);

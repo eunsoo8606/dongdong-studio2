@@ -191,8 +191,10 @@ section.light-mode {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    z-index: -1;
+    z-index: 1;
     opacity: 0;
+    visibility: hidden;
+    /* 초기엔 숨김 (GSAP에서 투명도 조절 시 표시) */
 }
 
 .hero-img-box {

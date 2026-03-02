@@ -13,7 +13,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Layout 설정
 app.use(expressLayouts);
-app.set('layout', 'layout'); // layouts.ejs 사용
+app.set('layout', 'layout'); // layout.ejs 사용
 
 // Static 파일 설정
 app.use(express.static(path.join(__dirname, 'public')));
